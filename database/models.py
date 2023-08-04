@@ -54,8 +54,15 @@ class Rating(db.Model):
     user_fk = db.relationship(User)
 
 
+class UserAnswers(db.Model):
+    __tablename__ = 'user_answers'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    q_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
+    user_answer = db.Column(db.String)
 
-
+    user_fk = db.relationship(User)
+    question_fk = db.relationship(Question)
 
 
 
